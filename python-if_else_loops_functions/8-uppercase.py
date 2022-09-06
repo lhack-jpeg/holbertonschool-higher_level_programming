@@ -16,7 +16,7 @@ def uppercase(str):
         if islower(elem):
             elem = chr(ord(str[index]) - 32)
 
-        if index < len(str) - 1:
+        if index == len(str) - 1 or len(str) == 0:
             print("{:c}".format(ord(elem)), end="")
         else:
             print("{:c}".format(ord(elem)), end="\n")
