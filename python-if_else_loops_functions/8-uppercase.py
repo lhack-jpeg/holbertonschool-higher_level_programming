@@ -18,7 +18,5 @@ def uppercase(str):
 
         if index < len(str) - 1:
             print("{:c}".format(ord(elem)), end="")
-        elif len(str) == 0:
-            print("\n")
         else:
             print("{:c}".format(ord(elem)), end="\n")
