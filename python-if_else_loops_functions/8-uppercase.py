@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+
 def islower(c):
     ascii_val = ord(c)
 
@@ -17,5 +18,7 @@ def uppercase(str):
 
         if index < len(str) - 1:
             print("{:c}".format(ord(elem)), end="")
+        elif len(str) == 0:
+            print("\n")
         else:
             print("{:c}".format(ord(elem)), end="\n")
