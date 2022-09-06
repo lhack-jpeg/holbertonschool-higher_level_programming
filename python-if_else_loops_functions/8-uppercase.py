@@ -13,7 +13,7 @@ def islower(c):
 def uppercase(str):
     for elem in str:
         if islower(elem):
-            elem = chr(ord(str[index]) - 32)
+            elem = chr(ord(elem) - 32)
 
         print("{}".format(elem), end="")
     print("")
