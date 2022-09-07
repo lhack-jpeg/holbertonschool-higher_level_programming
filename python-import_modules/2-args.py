@@ -5,7 +5,7 @@ if __name__ == '__main__':
     import sys
 
     argc = len(sys.argv) - 1
-    
+
     if (argc == 1):
         print("{:d} argument:".format(argc))
     elif argc == 0:
