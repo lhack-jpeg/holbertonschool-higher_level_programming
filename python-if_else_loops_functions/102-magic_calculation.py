@@ -3,7 +3,7 @@
 
 def magic_calculation(a, b, c):
     if a > b:
-        if c > b:
+        if c < b:
             a = a * b
             a = a - c
             return a
