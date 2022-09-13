@@ -4,7 +4,7 @@
 def new_in_list(my_list, idx, element):
     if my_list is not None:
         if idx >= len(my_list) or idx < 0:
-            return None
+            return my_list
         copy_list = my_list.copy()
         copy_list[idx] = element
 
