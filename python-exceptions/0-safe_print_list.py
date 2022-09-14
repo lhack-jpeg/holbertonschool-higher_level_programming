@@ -7,7 +7,8 @@ def safe_print_list(my_list=[], x=0):
         for i in range(0, x):
             print(my_list[i], end="")
             total_print += 1
+        print()
     except:
-        pass
-    print()
+        print()
+
     return total_print
