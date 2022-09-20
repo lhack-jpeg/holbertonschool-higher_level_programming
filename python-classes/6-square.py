@@ -5,8 +5,21 @@
 class Square:
     '''Creates an initalised object'''
     def __init__(self, size=0, position=(0, 0)):
-        self.__size = size
-        self.__position = position
+        if not isinstance(value, int):
+            raise TypeError("size must be an integer")
+        if value < 0:
+            raise ValueError("size must be >= 0")
+        else:
+            self.__size = value
+
+        if type(position) != tuple or len(position) != 2:
+            raise TypeError("position must be a tuple of 2 positive integers")
+        if type(position[0]) != int or type(position[1]) != int:
+            raise TypeError("position must be a tuple of 2 positive integers")
+        if position[0] < 0 or position[1] < 0:
+            raise TypeError("position must be a tuple of 2 positive integers")
+        else:
+            self.__position = position
 
     @property
     def size(self):
@@ -31,14 +44,14 @@ class Square:
     @position.setter
     def positon(self, value):
         """Sets value of position attribute"""
-        if type(value) != tuple and len(position) != 2:
+        if type(position) != tuple or len(position) != 2:
             raise TypeError("position must be a tuple of 2 positive integers")
-        if type(position[0]) != int and type(position[1]) != int:
+        if type(position[0]) != int or type(position[1]) != int:
             raise TypeError("position must be a tuple of 2 positive integers")
         if position[0] < 0 or position[1] < 0:
             raise TypeError("position must be a tuple of 2 positive integers")
         else:
-            self.__position = value
+            self.__position = position
 
     def area(self):
         """Returns the value of the size squared."""
