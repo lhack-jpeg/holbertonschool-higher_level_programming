@@ -1,0 +1,50 @@
+``add_integer`` module
+
+The module defines a function that returns the sum of two integers.
+
+``Using add_integer``
+
+``add_integer(a, b=98)`` returns the sum of two parameters.
+
+Import Module:
+       >>> add_integer = __import__('0-add_integer').add_integer
+
+Testing:
+
+Functions checks to see if the values passed are of type Float or Integer.
+Floats are cast to inetger before addition.
+
+       >>> add_integer(1, 0)
+       1
+
+       >>> add_integer(1, -2.1)
+       -1
+
+       >>> add_integer(1.2, 2.1)
+       3
+
+       >>> add_integer(1)
+       99
+
+Function rasises a TypeError with incorrect types of value passed through e.g.
+strings, list, dictionariers, tuples.
+
+	 >>> add_integer(1, "Hello World")
+	 Traceback (most recent call last):
+	 ...
+	 TypeError: b must be an integer
+
+	 >>> add_integer(1, None)
+	 Traceback (most recent call last):
+	 ...
+	 TypeError: b must be an integer
+
+	 >>> add_integer([1], 1)
+	 Traceback (most recent call last):
+	 ...
+	 TypeError: a must be an integer
+
+	 >>> add_integer((1, 2), 0)
+	 Traceback (most recent call last):
+	 ...
+	 TypeError: a must be an integer
