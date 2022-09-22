@@ -48,3 +48,15 @@ strings, list, dictionariers, tuples.
 	 Traceback (most recent call last):
 	 ...
 	 TypeError: a must be an integer
+
+Test Check for overflow.
+
+     	   >>> add_integer(0, float('inf'))
+	   Traceback (most recent call last):
+	   ...
+	   OverflowError: cannot convert float infinity to integer
+
+	   >>> add_integer(float('NaN'))
+	   Traceback (most recent call last):
+	   ...
+	   OverflowError: cannot convert float NaN to integer
