@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Function to add two integers or floats."""
 
+
 def add_integer(a, b=98):
     """
     Sums the value of the parameters passed through. Checks to see if value are
