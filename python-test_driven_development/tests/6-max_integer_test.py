@@ -34,7 +34,7 @@ class TestMaxInteger(unittest.TestCase):
         self.assertEqual(max_integer([100, 99, 1, 2]), 100, "Should be 100")
 
     def test_max_in_middle(self):
-        self.assertEqual(max_integer([100, 99, 150, 1, 2]), 100,
+        self.assertEqual(max_integer([100, 99, 150, 1, 2]), 150,
                          "Should be 150")
 
     def test_list_of_one(self):
