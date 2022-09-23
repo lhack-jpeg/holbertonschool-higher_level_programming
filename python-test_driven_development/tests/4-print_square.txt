@@ -41,10 +41,14 @@ testing to see if size is good value passed through.
 	...
 	TypeError: size must be an integer
 
+Test for missing one argument:
+
 	>>> print_square()
 	Traceback (most recent call last):
 	...
 	TypeError: print_square() missing 1 required positional argument: 'size'
+
+Test for too large of an integer:
 
 	>>> print_square(1000000000000000000000000000000000000000000000000000000000)
 	Traceback (most recent call last):
