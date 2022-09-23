@@ -81,3 +81,8 @@ Function raises type Error if parameters are missing from input.
 	 Traceback (most recent call last):
 	 ...
 	 TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
+
+Speical case when dividing by float('inf')
+
+	>>> matrix_divided([[3, 3, 3],[6, 6, 6]], float('inf'))
+	[[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
