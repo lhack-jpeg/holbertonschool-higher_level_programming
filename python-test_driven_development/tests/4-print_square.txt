@@ -1,0 +1,52 @@
+``print_square`` module
+
+This module defines a function that prints a square out with length size.
+
+``Using print_square``
+
+``print_square(size)`` prints out a square with sides of length size. Checks to
+see that size is a good value.
+
+Import Module:
+       >>> print_square = __import__('4-print_square').print_square
+
+Testing good values.
+	>>> print_square(2)
+	##
+	##
+
+Testing size of 0
+	>>> print_square(0)
+
+
+testing to see if size is good value passed through.
+
+	>>> print_square(-1)
+	Traceback (most recent call last):
+	...
+	ValueError: size must be >= 0
+
+	>>> print_square(1.5)
+	Traceback (most recent call last):
+	...
+	TypeError: size must be an integer
+
+	>>> print_square('NaN')
+	Traceback (most recent call last):
+	...
+	TypeError: size must be an integer
+
+	>>> print_square("foo")
+	Traceback (most recent call last):
+	...
+	TypeError: size must be an integer
+
+	>>> print_square()
+	Traceback (most recent call last):
+	...
+	TypeError: print_square() missing 1 required positional argument: 'size'
+
+	>>> print_square(1000000000000000000000000000000000000000000000000000000000)
+	Traceback (most recent call last):
+	...
+	OverflowError: cannot fit 'int' into an index-sized integer
