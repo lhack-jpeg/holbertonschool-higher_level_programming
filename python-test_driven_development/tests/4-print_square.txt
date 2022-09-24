@@ -26,15 +26,21 @@ testing to see if different passed values through.
 	...
 	ValueError: size must be >= 0
 
+Testing to see if size is a float:
+
 	>>> print_square(1.5)
 	Traceback (most recent call last):
 	...
 	TypeError: size must be an integer
 
+Testing to see if Size is not a number:
+
 	>>> print_square('NaN')
 	Traceback (most recent call last):
 	...
 	TypeError: size must be an integer
+
+Testing to see when size is a string:
 
 	>>> print_square("foo")
 	Traceback (most recent call last):
@@ -47,10 +53,3 @@ Test for missing one argument:
 	Traceback (most recent call last):
 	...
 	TypeError: print_square() missing 1 required positional argument: 'size'
-
-Test for too large of an integer:
-
-	>>> print_square(1000000000000000000000000000000000000000000000000000000000)
-	Traceback (most recent call last):
-	...
-	OverflowError: cannot fit 'int' into an index-sized integer
