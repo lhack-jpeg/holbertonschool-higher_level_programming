@@ -19,9 +19,9 @@ Testing size of 0
 	>>> print_square(0)
 
 
-testing to see if size is good value passed through.
+testing to see if different passed values through.
 
-	>>> print_square(-1)
+	>>> print_square(-100)
 	Traceback (most recent call last):
 	...
 	ValueError: size must be >= 0
