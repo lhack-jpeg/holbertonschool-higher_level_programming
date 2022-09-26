@@ -38,7 +38,11 @@ Check for already sorted array:
       >>> my_list.print_sorted()
       [1, 2, 3, 4]
 
-check for negative numbers:
+Check to see return of print_sorted:
+      >>> isinstance(my_list.print_sorted(), list)
+      True
+
+Check for negative numbers:
       >>> my_list = MyList()
       >>> my_list.append(2)
       >>> my_list.append(98)
