@@ -39,7 +39,8 @@ Check for already sorted array:
       [1, 2, 3, 4]
 
 Check to see return of print_sorted:
-      >>> isinstance(my_list.print_sorted(), list)
+      >>> list_return = my_list.print_sorted()
+      >>> type(list_return) == list
       True
 
 Check for negative numbers:
