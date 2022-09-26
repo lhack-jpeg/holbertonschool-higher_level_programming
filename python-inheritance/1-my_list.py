@@ -18,4 +18,4 @@ class MyList(list):
         '''
         This method sorts the list and prints it out.
         '''
-        return (sorted(self))
+        print (sorted(self))
