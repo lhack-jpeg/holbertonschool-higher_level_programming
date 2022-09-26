@@ -22,10 +22,6 @@ Empty List:
       >>> my_list.print_sorted()
       []
 
-Test return type of method:
-     >>> type(my_list.print_sorted()) == list
-     True
-
 Append to list:
        >>> my_list.append(4)
        >>> my_list.append(2)
