@@ -42,3 +42,30 @@ Non integers passed through:
     Traceback (most recent call last):
     ...
     TypeError: string must be an integer
+
+    >>> my_obj.integer_validator('string', [1])
+    Traceback (most recent call last):
+    ...
+    TypeError: string must be an integer
+
+    >>> my_obj.integer_validator('string', None)
+    Traceback (most recent call last):
+    ...
+    TypeError: string must be an integer
+
+    >>> my_obj.integer_validator('string', True)
+    Traceback (most recent call last):
+    ...
+    TypeError: string must be an integer
+
+    >>> my_obj.integer_validator('string', (1,))
+    Traceback (most recent call last):
+    ...
+    TypeError: string must be an integer
+
+One parameter passed through:
+
+    >>> my_obj.integer_validator('string')
+    Traceback (most recent call last):
+    ...
+    TypeError: integer_validator() missing 1 required positional argument: 'value'
