@@ -1,0 +1,44 @@
+``BaseGeometry`` module
+
+This module contains the constructor for the BaseGeometry
+class.
+
+``Using BaseGeometry``
+
+``var_name = BaseGeometry`` The constructor will create a new
+instance of the class in the var_name.
+
+``var_name.integer_validator(name, value)`` Will check the value passed through
+is an integer and greater than 0.
+
+Import Module:
+       >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+Good values passed through:
+
+     >>> my_obj = BaseGeometry()
+     >>> my_obj.integer_validator('string', 2)
+     >>> my_obj.integer_validator('string', 12)
+
+Bad integers passed through:
+
+    >>> my_obj.integer_validator('string', 0)
+    Traceback (most recent call last):
+    ...
+    ValueError: string must be greater than 0
+
+    >>> my_obj.integer_validator('string', -1)
+    Traceback (most recent call last):
+    ...
+    ValueError: string must be greater than 0
+
+Non integers passed through:
+    >>> my_obj.integer_validator('string', "Hellow")
+    Traceback (most recent call last):
+    ...
+    TypeError: string must be an integer
+
+    >>> my_obj.integer_validator('string', 1.0)
+    Traceback (most recent call last):
+    ...
+    TypeError: string must be an integer
