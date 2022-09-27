@@ -9,4 +9,9 @@ def inherits_from(obj, a_class):
     '''
     function return is subclass func
     '''
-    return issubclass(type(obj), a_class)
+    sub_c = issubclass(type(obj), a_class)
+    is_c = type(obj) == a_class
+    if sub_c & ~is_c:
+        return True
+    else:
+        return False
