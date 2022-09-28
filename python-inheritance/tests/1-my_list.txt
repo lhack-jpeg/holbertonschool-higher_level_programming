@@ -30,6 +30,9 @@ Append to list:
        >>> print(my_list)
        [4, 2, 3, 1]
 
+       >>> my_list.print_sorted()
+       [1, 2, 3, 4]
+
 Check sort method works:
       >>> my_list.print_sorted()
       [1, 2, 3, 4]
