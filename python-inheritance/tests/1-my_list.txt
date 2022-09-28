@@ -13,7 +13,7 @@ print sorted. This takes the list of integers and sorts ascending
 Import module:
        >>> MyList = __import__('1-my_list').MyList
 
-Checking for sublcass:
+Checking for subclass:
 	 >>> issubclass(MyList, list)
 	 True
 
@@ -67,3 +67,10 @@ All negative numbers:
 
     >>> my_list.print_sorted()
     [-9, -6, -5, -4]
+
+
+Checking for handling of too many arguments:
+	 >>> my_list.print_sorted(8)
+	 Traceback (most recent call last):
+	 ...
+	 TypeError: print_sorted() takes 1 positional argument but 2 were given
