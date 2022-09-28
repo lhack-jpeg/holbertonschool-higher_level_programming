@@ -13,10 +13,6 @@ print sorted. This takes the list of integers and sorts ascending
 Import module:
        >>> MyList = __import__('1-my_list').MyList
 
-Checking for subclass:
-       >>> issubclass(MyList, list)
-       True
-
        >>> my_list = MyList()
        >>> print(my_list)
        []
@@ -30,3 +26,7 @@ Append to list:
        >>> my_list.append(1)
        >>> print(my_list)
        [4, 2, 3, 1]
+
+Checking for subclass:
+       >>> issubclass(MyList, list)
+       True
