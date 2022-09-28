@@ -17,7 +17,8 @@ Checking for subclass:
        >>> issubclass(MyList, list)
        True
 
-Empty List:
        >>> my_list = MyList()
        >>> my_list.print_sorted()
        []
+
+Append to list:
