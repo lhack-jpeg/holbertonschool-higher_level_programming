@@ -27,6 +27,3 @@ Append to list:
        >>> print(my_list)
        [4, 2, 3, 1]
 
-Checking for subclass:
-       >>> issubclass(MyList, list)
-       True
