@@ -18,7 +18,8 @@ Checking for subclass:
        True
 
        >>> my_list = MyList()
-       print(my_list)
+       >>> print(my_list)
+       []
        >>> my_list.print_sorted()
        []
 
