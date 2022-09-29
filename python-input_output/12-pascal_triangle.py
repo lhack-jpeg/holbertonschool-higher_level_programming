@@ -26,5 +26,5 @@ def pascal_triangle(n):
     pascal_tri = []
     if n <= 0:
         return pascal_tri
-    pascal_tri = [[1, 1]]
-    return pascal_recur(pascal_tri, n - 1)
+    pascal_tri = [[1]]
+    return pascal_recur(pascal_tri, n)
