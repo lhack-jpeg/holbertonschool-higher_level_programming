@@ -5,9 +5,6 @@ serialisation of an object.
 '''
 
 
-import json
-
-
 def class_to_json(obj):
     '''Take an object and returns a dict description of the obj.'''
-    return json.dumps(obj.__dict__)
+    return (obj.__dict__)
