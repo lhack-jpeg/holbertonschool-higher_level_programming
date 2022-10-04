@@ -28,7 +28,7 @@ class Rectangle(Base):
         is an int and above 0.
         '''
         try:
-            self.height_width_validator('width', value)
+            self.integer_validator('width', value)
             self.__width = value
         except Exception as e:
             raise e
@@ -45,7 +45,7 @@ class Rectangle(Base):
         an int and above 0.
         '''
         try:
-            self.height_width_validator('height', value)
+            self.integer_validator('height', value)
             self.__height = value
         except Exception as e:
             raise e
@@ -62,7 +62,7 @@ class Rectangle(Base):
         greater or equal to 0.
         '''
         try:
-            self.x_y_validator("x", value)
+            self.integer_validator("x", value)
             self.__x = value
         except Exception as e:
             raise e
@@ -79,7 +79,7 @@ class Rectangle(Base):
         is good.
         '''
         try:
-            self.x_y_validator("y", value)
+            self.integer_validator("y", value)
             self.__y = value
         except Exception as e:
             raise e
@@ -122,24 +122,16 @@ class Rectangle(Base):
             for key, value in kwargs.items():
                 setattr(self, str(key), value)
 
-    def height_width_validator(self, name, value):
+    def integer_validator(self, name, value):
         '''
         This function checks the value passed through are int and greater
         than 0.
         '''
         if type(value) != int:
             raise TypeError(f"{name} must be an integer")
-
-        if value <= 0:
-            raise ValueError(f"{name} must be > 0")
-
-    def x_y_validator(self, name, value):
-        '''
-        This function checks the value passed through are int and greater
-        than  or equal to 0.
-        '''
-        if type(value) != int:
-            raise TypeError(f"{name} must be an integer")
-
-        if value < 0:
-            raise ValueError(f"{name} must be >= 0")
+        if name in ['height', 'width']:
+            if value <= 0:
+                raise ValueError(f"{name} must be > 0")
+        if name in ['x', 'y']:
+            if value < 0:
+                raise ValueError(f"{name} must be >= 0")
