@@ -110,13 +110,17 @@ class Rectangle(Base):
         return (f'[{type(self).__name__}] ({self.id}) \
 {self.x}/{self.y} - {self.width}/{self.height}')
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         '''This method assigns values to the attribute depending on the
         positon it is entered. 1: id, 2: width, 3: height, 4: x, 5: y.
         '''
-        attribute_tuple = ("id", "width", "height", "x", "y")
-        for x in range(len(args)):
-            setattr(self, attribute_tuple[x], args[x])
+        if args is not None and len(args) > 0:
+            attribute_tuple = ("id", "width", "height", "x", "y")
+            for x in range(len(args)):
+                setattr(self, attribute_tuple[x], args[x])
+        if kwargs is not None:
+            for key, value in kwargs.items():
+                setattr(self, str(key), value)
 
     def height_width_validator(self, name, value):
         '''
