@@ -97,6 +97,9 @@ class Rectangle(Base):
 
         print (rect_string)
 
+    def area(self):
+        '''Returns the value of width * height of the instance.'''
+        return (self.width * self.height)
 
     def height_width_validator(self, name, value):
         '''
