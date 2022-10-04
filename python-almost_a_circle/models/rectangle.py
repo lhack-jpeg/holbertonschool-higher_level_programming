@@ -89,17 +89,26 @@ class Rectangle(Base):
         This method prints out the rectangle.
         '''
         rect_string = ""
+        for space in range(self.y):
+            rect_string += '\n'
         for i in range(self.height):
-            for j in range(self.width):
+            for space in range(self.x):
+                rect_string += " "
+            for character in range(self.width):
                 rect_string += "#"
             if i != self.height - 1:
                 rect_string += '\n'
 
-        print (rect_string)
+        print(rect_string)
 
     def area(self):
         '''Returns the value of width * height of the instance.'''
         return (self.width * self.height)
+
+    def __str__(self):
+        '''This method returns a formatted string describing the instance.'''
+        return (f'[{type(self).__name__}] ({self.id}) \
+{self.x}/{self.y} - {self.width}/{self.height}')
 
     def height_width_validator(self, name, value):
         '''
