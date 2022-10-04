@@ -27,3 +27,14 @@ class testSquare(unittest.TestCase):
           my_obj_2 = Square(4, 0, 0, 24)
           self.assertEqual(my_obj.id, 2)
           self.assertEqual(my_obj_2.id, 24)
+
+     def test_obj_size(self):
+          my_sq = Square(5)
+          my_sq.size = 7
+          self.assertEqual(my_sq.area(), 49)
+
+          with self.assertRaises(TypeError):
+               my_sq.size = [1]
+
+          with self.assertRaises(ValueError):
+               my_sq.size = 0
