@@ -11,10 +11,26 @@ class Rectangle(Base):
     def __init__(self, width, height, x=0, y=0, id=None):
         '''Class initalisation method.'''
         super().__init__(id)
-        self.__width = width
-        self.__height = height
-        self.__x = x
-        self.__y = y
+        try:
+            self.height_width_validator("width", width)
+            self.__width = width
+        except Exception as e:
+            raise e
+        try:
+            self.height_width_validator("height", height)
+            self.__height = height
+        except Exception as e:
+            raise e
+        try:
+            self.x_y_validator("x", x)
+            self.__x = x
+        except Exception as e:
+            raise e
+        try:
+            self.x_y_validator("y", y)
+            self.__y = y
+        except Exception as e:
+            raise e
 
     @property
     def width(self):
@@ -23,8 +39,15 @@ class Rectangle(Base):
 
     @width.setter
     def width(self, value):
-        '''Setter for width property.'''
-        self.__width = value
+        '''
+        Setter for width property. Checks to enusre the value passed through
+        is an int and above 0.
+        '''
+        try:
+            self.height_width_validator('width', value)
+            self.__width = value
+        except Exception as e:
+            raise e
 
     @property
     def height(self):
@@ -33,8 +56,15 @@ class Rectangle(Base):
 
     @height.setter
     def height(self, value):
-        '''Setter for height property.'''
-        self.__height = value
+        '''
+        Setter for height property. Checks to ensure value passed through is
+        an int and above 0.
+        '''
+        try:
+            self.height_width_validator('height', value)
+            self.__height = value
+        except Exception as e:
+            raise e
 
     @property
     def x(self):
@@ -43,8 +73,15 @@ class Rectangle(Base):
 
     @x.setter
     def x(self, value):
-        '''Setter for x property.'''
-        self.__x = value
+        '''
+        Setter for x property. Checks to ensure value is an int and
+        greater or equal to 0.
+        '''
+        try:
+            self.x_y_validator("x", value)
+            self.__x = value
+        except Exception as e:
+            raise e
 
     @property
     def y(self):
@@ -53,5 +90,34 @@ class Rectangle(Base):
 
     @y.setter
     def y(self, value):
-        '''Setter for y property.'''
-        self.__y = value
+        '''
+        Setter for y property. Checks to see if the value passed through
+        is good.
+        '''
+        try:
+            self.x_y_validator("y", value)
+            self.__y = value
+        except Exception as e:
+            raise e
+
+    def height_width_validator(self, name, value):
+        '''
+        This function checks the value passed through are int and greater
+        than 0.
+        '''
+        if type(value) != int:
+            raise TypeError(f"{name} must be an integer")
+
+        if value <= 0:
+            raise ValueError(f"{name} must be > 0")
+
+    def x_y_validator(self, name, value):
+        '''
+        This function checks the value passed through are int and greater
+        than  or equal to 0.
+        '''
+        if type(value) != int:
+            raise TypeError(f"{name} must be an integer")
+
+        if value < 0:
+            raise ValueError(f"{name} must be >= 0")
