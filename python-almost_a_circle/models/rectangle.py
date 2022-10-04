@@ -11,26 +11,10 @@ class Rectangle(Base):
     def __init__(self, width, height, x=0, y=0, id=None):
         '''Class initalisation method.'''
         super().__init__(id)
-        try:
-            self.height_width_validator("width", width)
-            self.__width = width
-        except Exception as e:
-            raise e
-        try:
-            self.height_width_validator("height", height)
-            self.__height = height
-        except Exception as e:
-            raise e
-        try:
-            self.x_y_validator("x", x)
-            self.__x = x
-        except Exception as e:
-            raise e
-        try:
-            self.x_y_validator("y", y)
-            self.__y = y
-        except Exception as e:
-            raise e
+        self.width = width
+        self.height = height
+        self.x = x
+        self.y = y
 
     @property
     def width(self):
@@ -99,6 +83,20 @@ class Rectangle(Base):
             self.__y = value
         except Exception as e:
             raise e
+
+    def display(self):
+        '''
+        This method prints out the rectangle.
+        '''
+        rect_string = ""
+        for i in range(self.height):
+            for j in range(self.width):
+                rect_string += "#"
+            if i != self.height - 1:
+                rect_string += '\n'
+
+        print (rect_string)
+
 
     def height_width_validator(self, name, value):
         '''
