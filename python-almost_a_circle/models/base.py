@@ -24,4 +24,4 @@ class Base():
         '''Returns a JSON string of list dictionaries.'''
         if list_dictionaries is None:
             list_dictionaries = []
-        return (json.dumps(list_dictionaries))
+        return json.dumps(list_dictionaries)
