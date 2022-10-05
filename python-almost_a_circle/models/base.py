@@ -24,4 +24,18 @@ class Base():
         """ returns a json string of a dictionary """
         if not list_dictionaries or list_dictionaries == '':
             list_dictionaries = []
-        return json.dumps(list_dictionaries or [])
+        return json.dumps(list_dictionaries)
+
+    @classmethod
+    def save_to_file(cls, list_objs):
+        '''Class method to save lists of instances to file.'''
+        obj_list = []
+        if list_objs is not None:
+            for obj in list_objs:
+                obj_list.append(obj.to_dictionary())
+
+        json_string = cls.to_json_string(obj_list)
+        filename = cls.__name__ + '.json'
+
+        with open(filename, 'w', encoding='utf-8') as f:
+            f.write(json_string)
