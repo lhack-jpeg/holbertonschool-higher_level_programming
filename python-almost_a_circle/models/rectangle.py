@@ -128,7 +128,11 @@ class Rectangle(Base):
         representation of the instance.
         '''
         new_dict = vars(self)
-        print(new_dict)
+        new_dict['width'] = new_dict.pop('_Rectangle__width')
+        new_dict['height'] = new_dict.pop('_Rectangle__height')
+        new_dict['x'] = new_dict.pop('_Rectangle__x')
+        new_dict['y'] = new_dict.pop('_Rectangle__y')
+        return new_dict
 
     def integer_validator(self, name, value):
         '''
