@@ -53,7 +53,9 @@ class Square(Rectangle):
         Method returns a dictionary representation of the
         the instance.
         '''
-        new_dict = super().to_dictionary()
-        new_dict['size'] = new_dict.pop('width')
-        new_dict.pop('height')
-        return new_dict
+        return {
+            'id': self.id,
+            'size': self.size,
+            'x': self.x,
+            'y': self.y
+        }

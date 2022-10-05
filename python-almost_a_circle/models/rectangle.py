@@ -127,12 +127,11 @@ class Rectangle(Base):
         This module contains the method to return a dicitonary
         representation of the instance.
         '''
-        new_dict = vars(self)
-        new_dict['width'] = new_dict.pop('_Rectangle__width')
-        new_dict['height'] = new_dict.pop('_Rectangle__height')
-        new_dict['x'] = new_dict.pop('_Rectangle__x')
-        new_dict['y'] = new_dict.pop('_Rectangle__y')
-        return new_dict
+        return {'id': self.id,
+                'width': self.width,
+                'height': self.height,
+                'x': self.x,
+                'y': self.y}
 
     def integer_validator(self, name, value):
         '''
