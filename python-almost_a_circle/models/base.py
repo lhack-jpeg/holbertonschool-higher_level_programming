@@ -4,7 +4,7 @@ This module contains the constructor for the base class
 '''
 
 import json
-
+from os.path import exists
 
 class Base():
     '''
@@ -57,3 +57,16 @@ class Base():
 
         dummy.update(**dictionary)
         return dummy
+
+    @classmethod
+    def load_from_file(cls):
+        '''Returns a list of class instances.'''
+        filename = cls.__name__ + '.json'
+        if not exists(filename):
+            return []
+        with open(filename, 'r', encoding='utf-8') as f:
+            obj_data = cls.from_json_string(f.read())
+            class_list = []
+            for obj in obj_data:
+                class_list.append(cls.create(**obj))
+            return class_list
