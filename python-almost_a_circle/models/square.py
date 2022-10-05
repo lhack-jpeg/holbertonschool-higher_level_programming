@@ -47,3 +47,9 @@ class Square(Rectangle):
         if kwargs is not None:
             for key, value in kwargs.items():
                 setattr(self, str(key), value)
+
+    def to_dictionary(self):
+        new_dict = super().to_dictionary()
+        new_dict['size'] = new_dict.pop('width')
+        new_dict.pop('height')
+        return new_dict
