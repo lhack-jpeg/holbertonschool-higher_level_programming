@@ -127,7 +127,8 @@ class Rectangle(Base):
         This module contains the method to return a dicitonary
         representation of the instance.
         '''
-        return (self.__dict__)
+        new_dict = vars(self)
+        print(new_dict)
 
     def integer_validator(self, name, value):
         '''
