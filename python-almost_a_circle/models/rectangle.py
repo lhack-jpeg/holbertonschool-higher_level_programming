@@ -122,7 +122,6 @@ class Rectangle(Base):
             for key, value in kwargs.items():
                 setattr(self, str(key), value)
 
-
     def to_dictionary(self):
         '''
         This module contains the method to return a dicitonary

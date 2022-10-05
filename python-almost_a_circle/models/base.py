@@ -6,6 +6,7 @@ This module contains the constructor for the base class
 import json
 from os.path import exists
 
+
 class Base():
     '''
     Constructor for base class
