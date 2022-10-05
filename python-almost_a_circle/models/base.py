@@ -51,7 +51,7 @@ class Base():
         '''Method to return rectangle or square instances using the base
         class.'''
         if cls.__name__ == 'Rectangle':
-            dummmy = cls(1,1)
+            dummy = cls(1, 1)
         if cls.__name__ == 'Square':
             dummy = cls(1)
 
