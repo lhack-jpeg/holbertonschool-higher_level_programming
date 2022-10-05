@@ -122,6 +122,13 @@ class Rectangle(Base):
             for key, value in kwargs.items():
                 setattr(self, str(key), value)
 
+    def to_dictionary(self):
+        '''
+        This module contains the method to return a dicitonary
+        representation of the instance.
+        '''
+        return (self.__dict__)
+
     def integer_validator(self, name, value):
         '''
         This function checks the value passed through are int and greater
