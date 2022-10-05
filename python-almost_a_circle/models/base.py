@@ -45,3 +45,15 @@ class Base():
         if json_string is None or json_string == '':
             return []
         return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        '''Method to return rectangle or square instances using the base
+        class.'''
+        if cls.__name__ == 'Rectangle':
+            dummmy = cls(1,1)
+        if cls.__name__ == 'Square':
+            dummy = cls(1)
+
+        dummy.update(**dictionary)
+        return dummy
