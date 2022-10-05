@@ -34,3 +34,16 @@ class Square(Rectangle):
             self.height = value
         except Exception as e:
             raise e
+
+    def update(self, *args, **kwargs):
+        '''
+        This method updates the value for the instance using
+        either *args or **kwargs.
+        '''
+        if args is not None and len(args) > 0:
+            attr_tuple = ('id', 'size', 'x', 'y')
+            for x in range(len(args)):
+                setattr(self, attr_tuple[x], args[x])
+        if kwargs is not None:
+            for key, value in kwargs.items():
+                setattr(self, str(key), value)
