@@ -60,11 +60,11 @@ class testSquare(unittest.TestCase):
 
     def test_obj_id(self):
         '''Check to assignment of id with None passed.'''
-        self.assertEqual(self.sq_1.id, 1)
+        self.assertEqual(self.sq_1.id, 20)
         '''Check to assignment of id with id passed.'''
         self.assertEqual(self.sq_2.id, 24)
         '''Check to assignment of id with None passed + 1.'''
-        self.assertEqual(self.sq_3.id, 2)
+        self.assertEqual(self.sq_3.id, 21)
 
     def test_obj_setter_getter(self):
         '''Check the setter and getter for size property.'''
@@ -72,10 +72,10 @@ class testSquare(unittest.TestCase):
         self.sq_1.size = 3
         self.assertEqual(self.sq_1.size, 3)
         self.assertEqual(self.sq_2.x, 0)
-        self.sq_1.x = 4
-        self.assertEqual(self.sq_2.x, 0)
-        self.sq_1.y = 10
-        self.assertEqual(self.sq_2.y, 10)
+        self.sq_1.x = 7
+        self.assertEqual(self.sq_1.x, 7)
+        self.sq_1.y = 9
+        self.assertEqual(self.sq_1.y, 9)
 
         with self.assertRaises(TypeError):
             '''Check integer validator method works within setter.'''
