@@ -51,7 +51,7 @@ class testSquare(unittest.TestCase):
         Base._Base__nb_objects = 0
         cls.sq_1 = Square(5)
         cls.sq_2 = Square(2, id=24)
-        cls.sq_3 = Square(4)
+        cls.sq_3 = Square(4, 2)
         cls.sq_4 = Square(3, 2, 4)
 
     def test_obj_class(self):
@@ -131,6 +131,15 @@ class testSquare(unittest.TestCase):
             my_obj = Square(-1)
 
         with self.assertRaises(ValueError):
+            my_obj = Square(1, -1)
+
+        with self.assertRaises(ValueError):
+            my_obj = Square(1, 2, -1)
+
+        with self.assertRaises(ValueError):
+            my_obj = Square(0)
+
+        with self.assertRaises(ValueError):
             my_obj = Square(2, -1, 0, 24)
 
         with self.assertRaises(ValueError):
@@ -180,6 +189,11 @@ class testSquare(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             self.sq_3.update(height=0)
+
+    def test_rect_str(self):
+        '''test __str__ method'''
+        self.assertTrue(isinstance(str(self.sq_1), str))
+        self.assertEqual(str(self.sq_1), '[Square] (20) 7/9 - 3')
 
 
 if __name__ == "__main__":
