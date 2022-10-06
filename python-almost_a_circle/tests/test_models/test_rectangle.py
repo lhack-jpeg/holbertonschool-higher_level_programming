@@ -4,8 +4,10 @@
 Unit test for the rectangle class
 '''
 
+import re
 import unittest
 import inspect
+import os
 from models.base import Base
 from models.rectangle import Rectangle
 
@@ -142,14 +144,16 @@ class TestRectangle(unittest.TestCase):
 
     def test_rectangle_kwargs(self):
         '''Function to test kwargs method.'''
-        self.r1.update(id=42)
+        self.r1.update(**{'id': 42})
         self.assertEqual(self.r1.id, 42)
-        self.r1.update(y=1, x=2)
-        self.assertEqual(self.r1.x, 2)
-        self.assertEqual(self.r1.y, 1)
-        self.r1.update(height=20, width=12)
+        self.r1.update(**{'id': 42, 'height': 20})
         self.assertEqual(self.r1.height, 20)
-        self.assertEqual(self.r1.width, 12)
+        self.r1.update(**{'id': 42, 'height': 20, 'width': 20})
+        self.assertEqual(self.r1.width, 20)
+        self.r1.update(**{'id': 42, 'height': 20, 'width': 20, 'x': 2})
+        self.assertEqual(self.r1.x, 2)
+        self.r1.update(**{'id': 42, 'height': 20, 'width': 20, 'x': 2, 'y': 1})
+        self.assertEqual(self.r1.y, 1)
 
         with self.assertRaises(ValueError):
             self.r2.update(height=0)
@@ -165,6 +169,51 @@ class TestRectangle(unittest.TestCase):
         r1_dict = self.r1.to_dictionary()
         self.assertTrue(isinstance(r1_dict, dict))
         self.assertEqual(r1_dict, test_dict)
+
+    def test_rect_create(self):
+        '''Test class method from Base using using rectangle class.'''
+        r2_dict = self.r2.to_dictionary()
+        clone_r2 = Rectangle.create(**r2_dict)
+        self.assertEqual(r2_dict, clone_r2.to_dictionary())
+        new_r = Rectangle.create(**{'id': 1024})
+        self.assertTrue(isinstance(new_r, Rectangle))
+        self.assertEqual(
+            new_r.to_dictionary(),
+            {'id': 1024, 'width': 1, 'height': 1, 'x': 0, 'y': 0})
+        new_r = Rectangle.create(**{'id': 1024, 'height': 2})
+        self.assertTrue(isinstance(new_r, Rectangle))
+        self.assertEqual(
+            new_r.to_dictionary(),
+            {'id': 1024, 'height': 2, 'width': 1, 'x': 0, 'y': 0})
+        new_r = Rectangle.create(
+            **{'id': 1024, 'height': 2, 'width': 12})
+        self.assertTrue(isinstance(new_r, Rectangle))
+        self.assertEqual(
+            new_r.to_dictionary(),
+            {'id': 1024, 'height': 2, 'width': 12, 'x': 0, 'y': 0})
+        new_r = Rectangle.create(
+            **{'id': 1024, 'height': 2, 'width': 12, 'x': 2})
+        self.assertTrue(isinstance(new_r, Rectangle))
+        self.assertEqual(
+            new_r.to_dictionary(),
+            {'id': 1024, 'height': 2, 'width': 12, 'x': 2, 'y': 0})
+        new_r = Rectangle.create(
+            **{'id': 1024, 'height': 2, 'width': 12, 'x': 2, 'y': 1})
+        self.assertTrue(isinstance(new_r, Rectangle))
+        self.assertEqual(
+            new_r.to_dictionary(),
+            {'id': 1024, 'height': 2, 'width': 12, 'x': 2, 'y': 1})
+
+    def test_rect_save_to_file(self):
+        '''Test save to file method for Rectangle class.'''
+        result = Rectangle.load_from_file(None)
+        self.assertEqual(result, [])
+        result = Rectangle.load_from_file([])
+        self.assertEqual(result, [])
+        if os.path.exists('Rectangle.json'):
+            os.remove('Rectangle.json')
+        result = Rectangle.load_from_file('Rectangle.json')
+        self.assertEqual(result, [])
 
 
 if __name__ == "__main__":
