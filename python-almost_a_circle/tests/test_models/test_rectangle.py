@@ -4,8 +4,9 @@
 Unit test for the rectangle class
 '''
 
-import re
+import io
 import unittest
+import unittest.mock
 import inspect
 import os
 import json
@@ -55,7 +56,7 @@ class TestRectangle(unittest.TestCase):
         cls.r1 = Rectangle(10, 4, id=4)
         cls.r2 = Rectangle(5, 4)
         cls.r3 = Rectangle(4, 12, 0, 0, 24)
-        cls.r4 = Rectangle(6, 8)
+        cls.r4 = Rectangle(6, 8, 2)
 
     def test_obj_class(self):
         '''Test to see class and inheritance.'''
@@ -104,6 +105,12 @@ class TestRectangle(unittest.TestCase):
             my_obj = Rectangle(2, -2)
 
         with self.assertRaises(ValueError):
+            my_obj = Rectangle(0, 2)
+
+        with self.assertRaises(ValueError):
+            my_obj = Rectangle(2, 0)
+
+        with self.assertRaises(ValueError):
             my_obj = Rectangle(2, 2, 0, -1, 24)
 
         with self.assertRaises(ValueError):
@@ -131,6 +138,14 @@ class TestRectangle(unittest.TestCase):
 
         self.r2.width = 6
         self.assertEqual(self.r2.area(), 24)
+        
+    @unittest.mock.patch('sys.stdout', new_callable=io.StringIO)
+    def assert_stdout(self, expected_output, mock_stdout):
+        '''Test display method of class.'''
+        self.r2.display()
+        self.assertEqual(mock_stdout.getvalue(), expected_output)
+        self.r4.display()
+        self.assertEqual(mock_stdout.getvalue(), expected_output)
 
     def test_rectangle_update(self):
         '''Check update method with *args.'''
