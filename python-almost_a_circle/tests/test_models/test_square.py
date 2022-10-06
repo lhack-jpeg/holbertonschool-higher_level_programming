@@ -59,6 +59,7 @@ class testSquare(unittest.TestCase):
         self.assertTrue(issubclass(type(self.sq_1), Rectangle))
 
     def test_obj_id(self):
+        Base._Base__nb_objects = 0
         '''Check to assignment of id with None passed.'''
         self.assertEqual(self.sq_1.id, 20)
         '''Check to assignment of id with id passed.'''
