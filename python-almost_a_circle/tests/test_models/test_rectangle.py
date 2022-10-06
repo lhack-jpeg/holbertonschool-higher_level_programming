@@ -211,33 +211,35 @@ class TestRectangle(unittest.TestCase):
     def test_rect_save_to_file(self):
         '''Test save to file method for Rectangle class.'''
         '''Check it saves and empty string'''
+        filename = 'Rectangle.json'
         Rectangle.save_to_file(None)
-        with open('Rectangle.json', 'r', encoding='utf-8') as f:
+        with open(filename, 'r', encoding='utf-8') as f:
             result = f.read()
             self.assertEqual(result, '[]')
         '''clean up file.'''
-        if os.path.exists('Rectangle.json'):
-            os.remove('Rectangle.json')
+        if os.path.exists(filename):
+            os.remove(filename)
             Rectangle.save_to_file([])
         with open('Rectangle.json', 'r', encoding='utf-8') as f:
             result = f.read()
             self.assertEqual(result, '[]')
         '''clean up file.'''
-        if os.path.exists('Rectangle.json'):
-            os.remove('Rectangle.json')
+        if os.path.exists(filename):
+            os.remove(filename)
         Rectangle.save_to_file([self.r1])
-        self.assertTrue(os.path.exists('Rectangle.json'))
-        with open('Rectangle.json', 'r', encoding='utf-8') as f:
+        self.assertTrue(os.path.exists(filename))
+        with open(filename, 'r', encoding='utf-8') as f:
             result = f.read()
             result = json.loads(result)
             self.assertEqual(result, [self.r1.to_dictionary()])
-        if os.path.exists('Rectangle.json'):
-            os.remove('Rectangle.json')
+        if os.path.exists(filename):
+            os.remove(filename)
 
     def test_rect_load_from_file(self):
         '''Test load from file method.'''
-        if os.path.exists('Rectangle.json'):
-            os.remove('Rectangle.json')
+        filename = 'Rectangle.json'
+        if os.path.exists(filename):
+            os.remove(filename)
         result = Rectangle.load_from_file()
         self.assertEqual(result, [])
         Rectangle.save_to_file([self.r3])
