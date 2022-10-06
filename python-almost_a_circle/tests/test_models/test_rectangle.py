@@ -144,7 +144,7 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(self.r3.x, 9)
 
         with self.assertRaises(ValueError):
-            self.r3.update(42, 2, 8, 9, -10)
+            self.r3.update(42, 2, -8, 9, 10)
 
     def test_rectangle_kwargs(self):
         '''Function to test kwargs method.'''
