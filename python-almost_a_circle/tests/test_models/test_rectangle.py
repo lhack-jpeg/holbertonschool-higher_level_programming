@@ -8,6 +8,7 @@ import re
 import unittest
 import inspect
 import os
+import json
 from models.base import Base
 from models.rectangle import Rectangle
 
@@ -62,7 +63,8 @@ class TestRectangle(unittest.TestCase):
     def test_obj_id(self):
         '''Test init method.'''
         self.assertEqual(self.r1.id, 4)
-        self.assertEqual(self.r2.id, 2)
+        self.assertEqual(self.r2.id, 1)
+        self.assertEqual(self.r4.id, 2)
 
     def test_right_type(self):
         '''Test integer validator method.'''
@@ -126,7 +128,7 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(self.r2.area(), 20)
 
         self.r2.width = 6
-        self.assertEqual(self.r2.area(), 30)
+        self.assertEqual(self.r2.area(), 24)
 
     def test_rectangle_update(self):
         '''Check update method with *args.'''
@@ -206,14 +208,39 @@ class TestRectangle(unittest.TestCase):
 
     def test_rect_save_to_file(self):
         '''Test save to file method for Rectangle class.'''
-        result = Rectangle.load_from_file(None)
-        self.assertEqual(result, [])
-        result = Rectangle.load_from_file([])
-        self.assertEqual(result, [])
+        '''Check it saves and empty string'''
+        Rectangle.save_to_file(None)
+        with open('Rectangle.json', 'r', encoding='utf-8') as f:
+            result = f.read()
+            self.assertEqual(result, '[]')
+        '''clean up file.'''
         if os.path.exists('Rectangle.json'):
             os.remove('Rectangle.json')
-        result = Rectangle.load_from_file('Rectangle.json')
+            Rectangle.save_to_file([])
+        with open('Rectangle.json', 'r', encoding='utf-8') as f:
+            result = f.read()
+            self.assertEqual(result, '[]')
+        '''clean up file.'''
+        if os.path.exists('Rectangle.json'):
+            os.remove('Rectangle.json')
+        Rectangle.save_to_file([self.r1])
+        self.assertTrue(os.path.exists('Rectangle.json'))
+        with open('Rectangle.json', 'r', encoding='utf-8') as f:
+            result = f.read()
+            result = json.loads(result)
+            self.assertEqual(result, [self.r1.to_dictionary()])
+        if os.path.exists('Rectangle.json'):
+            os.remove('Rectangle.json')
+
+    def test_rect_load_from_file(self):
+        '''Test load from file method.'''
+        if os.path.exists('Rectangle.json'):
+            os.remove('Rectangle.json')
+        result = Rectangle.load_from_file()
         self.assertEqual(result, [])
+        Rectangle.save_to_file([self.r3])
+        result = Rectangle.load_from_file()
+        self.assertEqual(str(result[0]), str(self.r3))
 
 
 if __name__ == "__main__":
