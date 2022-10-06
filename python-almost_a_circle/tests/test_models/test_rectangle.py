@@ -42,19 +42,25 @@ class TestRectangleDocs(unittest.TestCase):
 
 class TestRectangle(unittest.TestCase):
     '''Testing Rectangle methods.'''
+
+    @classmethod
+    def setUpClass(cls):
+        '''Set up test environment.'''
+        Base._Base__nb_objects = 0
+        cls.r1 = Rectangle(10, 4, id=4)
+        cls.r2 = Rectangle(5, 4)
+        cls.r3 = Rectangle(4, 12, 0, 0, 24)
+        cls.r4 = Rectangle(6, 8)
+
     def test_obj_class(self):
         '''Test to see class and inheritance.'''
-        my_obj = Rectangle(10, 2)
-        self.assertTrue(isinstance(my_obj, Rectangle))
-        self.assertTrue(issubclass(type(my_obj), Base))
+        self.assertTrue(isinstance(self.r1, Rectangle))
+        self.assertTrue(issubclass(type(self.r1), Base))
 
     def test_obj_id(self):
         '''Test init method.'''
-        Base._Base__nb_objects = 0
-        my_obj = Rectangle(10, 4, id=4)
-        my_obj_2 = Rectangle(4, 12, 0, 0, 24)
-        self.assertEqual(my_obj.id, 4)
-        self.assertEqual(my_obj_2.id, 24)
+        self.assertEqual(self.r1.id, 4)
+        self.assertEqual(self.r2.id, 2)
 
     def test_right_type(self):
         '''Test integer validator method.'''
@@ -115,41 +121,50 @@ class TestRectangle(unittest.TestCase):
 
     def test_rectangle_area(self):
         '''Test the return from area method.'''
-        test_obj = Rectangle(4, 5)
-        self.assertEqual(test_obj.area(), 20)
+        self.assertEqual(self.r2.area(), 20)
 
-        test_obj.width = 6
-        self.assertEqual(test_obj.area(), 30)
+        self.r2.width = 6
+        self.assertEqual(self.r2.area(), 30)
 
     def test_rectangle_update(self):
         '''Check update method with *args.'''
-        test_obj = Rectangle(10, 10, 10, 10)
-        test_obj.update(42)
-        self.assertEqual(test_obj.id, 42)
-        test_obj.update(42, 2)
-        self.assertEqual(test_obj.width, 2)
-        test_obj.update(42, 2, 8)
-        self.assertEqual(test_obj.height, 8)
-        test_obj.update(42, 2, 8, 9)
-        self.assertEqual(test_obj.x, 9)
+        self.r3.update(42)
+        self.assertEqual(self.r3.id, 42)
+        self.r3.update(42, 2)
+        self.assertEqual(self.r3.width, 2)
+        self.r3.update(42, 2, 8)
+        self.assertEqual(self.r3.height, 8)
+        self.r3.update(42, 2, 8, 9)
+        self.assertEqual(self.r3.x, 9)
 
         with self.assertRaises(ValueError):
-            test_obj.update(42, 2, 8, 9, -10)
+            self.r3.update(42, 2, 8, 9, -10)
 
     def test_rectangle_kwargs(self):
         '''Function to test kwargs method.'''
-        test_obj = Rectangle(10, 10, 10, 10)
-        test_obj.update(id=42)
-        self.assertEqual(test_obj.id, 42)
-        test_obj.update(y=1, x=2)
-        self.assertEqual(test_obj.x, 2)
-        self.assertEqual(test_obj.y, 1)
-        test_obj.update(height=20, width=12)
-        self.assertEqual(test_obj.height, 20)
-        self.assertEqual(test_obj.width, 12)
+        self.r1.update(id=42)
+        self.assertEqual(self.r1.id, 42)
+        self.r1.update(y=1, x=2)
+        self.assertEqual(self.r1.x, 2)
+        self.assertEqual(self.r1.y, 1)
+        self.r1.update(height=20, width=12)
+        self.assertEqual(self.r1.height, 20)
+        self.assertEqual(self.r1.width, 12)
 
         with self.assertRaises(ValueError):
-            test_obj.update(height=0)
+            self.r2.update(height=0)
+
+    def test_rect_str(self):
+        '''test __str__ method'''
+        self.assertTrue(isinstance(str(self.r3), str))
+        self.assertEqual(str(self.r3), '[Rectangle] (24) 0/0 - 4/12')
+
+    def test_rect_to_dictionary(self):
+        '''Test to_dictionary method.'''
+        test_dict = {'id': 4, 'width': 10, 'height': 4, 'x': 0, 'y': 0}
+        r1_dict = self.r1.to_dictionary()
+        self.assertTrue(isinstance(r1_dict, dict))
+        self.assertEqual(r1_dict, test_dict)
 
 
 if __name__ == "__main__":
