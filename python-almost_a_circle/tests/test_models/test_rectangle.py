@@ -105,17 +105,10 @@ class TestRectangle(unittest.TestCase):
             my_obj = Rectangle(2, -2)
 
         with self.assertRaises(ValueError):
-<<<<<<< HEAD
             my_obj = Rectangle(0, 1)
 
         with self.assertRaises(ValueError):
             my_obj = Rectangle(1, 0)
-=======
-            my_obj = Rectangle(0, 2)
-
-        with self.assertRaises(ValueError):
-            my_obj = Rectangle(2, 0)
->>>>>>> ebf67ee427dce2fc53fb35daa4e20af4e55b07d6
 
         with self.assertRaises(ValueError):
             my_obj = Rectangle(2, 2, 0, -1, 24)
