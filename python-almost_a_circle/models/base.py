@@ -100,7 +100,10 @@ class Base():
         if not exists(filename):
             return []
         with open(filename, newline='') as csvfile:
-            data = csv.DictReader(csvfile)
+            obj_data = csv.DictReader(csvfile)
+            class_list = []
+            for obj in obj_data:
+                class_list.append(cls.create(**obj))
             
-        return data
+        return class_list
 
