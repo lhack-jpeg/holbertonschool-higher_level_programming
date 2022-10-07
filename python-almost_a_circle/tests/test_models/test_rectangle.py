@@ -139,13 +139,8 @@ class TestRectangle(unittest.TestCase):
         self.r2.width = 6
         self.assertEqual(self.r2.area(), 24)
         
-    @unittest.mock.patch('sys.stdout', new_callable=io.StringIO)
-    def assert_stdout(self, expected_output, mock_stdout):
-        '''Test display method of class.'''
+    def test_rectangle_displau(self):
         self.r2.display()
-        self.assertEqual(mock_stdout.getvalue(), expected_output)
-        self.r4.display()
-        self.assertEqual(mock_stdout.getvalue(), expected_output)
 
     def test_rectangle_update(self):
         '''Check update method with *args.'''
