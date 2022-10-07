@@ -6,7 +6,6 @@ This module contains the constructor for the base class
 import json
 from os.path import exists
 import csv
-import pandas as pd
 
 
 class Base():
@@ -90,7 +89,6 @@ class Base():
                 obj_list.append(obj.to_dictionary())
         with open(filename, 'w', encoding='utf-8') as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            writer.writeheader()
             for obj in obj_list:
                 writer.writerow(obj)
 
@@ -101,12 +99,19 @@ class Base():
         if not exists(filename):
             return []
         dict_list = []
-        df = pd.read_csv(filename)
-        obj_list = df.to_dict('records')
-        for obj in obj_list:
-            dict_list.append(cls.create(**obj))
-
-        return dict_list
+        if cls.__name__ == 'Square':
+            fieldnames = ['id', 'size', 'x', 'y']
+        else:
+            fieldnames = ['id', 'width', 'height', 'x', 'y']
+        try:
+            with open(filename, 'r', newline='') as csvfile:
+                reader = csv.DictReader(csvfile, fieldnames=fieldnames)
+                for row in reader:
+                    row = {key: int(value) for key, value in row.items()}
+                    dict_list.append(cls.create(**row))
+                return dict_list
+        except Exception:
+            return dict_list
             
 
 
