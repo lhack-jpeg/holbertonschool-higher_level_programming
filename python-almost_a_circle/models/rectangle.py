@@ -98,8 +98,8 @@ class Rectangle(Base):
                 rect_string += "#"
             if i != self.height - 1:
                 rect_string += '\n'
-
         print(rect_string)
+        return (rect_string)
 
     def area(self):
         '''Returns the value of width * height of the instance.'''

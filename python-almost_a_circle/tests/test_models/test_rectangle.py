@@ -140,7 +140,8 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(self.r2.area(), 24)
         
     def test_rectangle_displau(self):
-        self.r2.display()
+        '''Check display method.'''
+        self.assertTrue(isinstance(self.r2.display(), str))
 
     def test_rectangle_update(self):
         '''Check update method with *args.'''
