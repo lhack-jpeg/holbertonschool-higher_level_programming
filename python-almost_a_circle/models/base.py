@@ -5,6 +5,7 @@ This module contains the constructor for the base class
 
 import json
 from os.path import exists
+import csv
 
 
 class Base():
@@ -14,6 +15,7 @@ class Base():
     __nb_objects = 0
 
     def __init__(self, id=None):
+        '''Initialisation of the instance.'''
         if id is not None:
             self.id = id
         else:
@@ -72,3 +74,36 @@ class Base():
             for obj in obj_data:
                 class_list.append(cls.create(**obj))
             return class_list
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        '''Saves list of object instances to file.'''
+        filename = cls.__name__ + '.csv'
+        if cls.__name__ == 'Sqaure':
+            fieldnames = ['id', 'size', 'x', 'y']
+        else:
+            fieldnames = ['id', 'width', 'height', 'x', 'y']
+        obj_list= []
+        if list_objs is not None:
+            for obj in list_objs:
+                obj_list.append(obj.to_dictionary())
+        with open(filename, 'w', encoding='utf-8') as csvfile:
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            writer.writeheader()
+            for obj in obj_list:
+                writer.writerow(obj)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        '''Returns a list of class instances.'''
+        filename = cls.__name__ + '.csv'
+        if not exists(filename):
+            return []
+        with open(filename, newline='') as csvfile:
+            obj_data = csv.DictReader(csvfile)
+            class_list = []
+            for obj in obj_data:
+                class_list.append(cls.create(**obj))
+            
+        return class_list
+
