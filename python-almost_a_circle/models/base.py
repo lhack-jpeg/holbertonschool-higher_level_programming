@@ -83,7 +83,7 @@ class Base():
             fieldnames = ['id', 'size', 'x', 'y']
         else:
             fieldnames = ['id', 'width', 'height', 'x', 'y']
-        obj_list= []
+        obj_list = []
         if list_objs is not None:
             for obj in list_objs:
                 obj_list.append(obj.to_dictionary())
@@ -112,4 +112,3 @@ class Base():
                 return dict_list
         except Exception:
             return dict_list
-            
