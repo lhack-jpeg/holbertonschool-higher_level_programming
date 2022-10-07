@@ -6,6 +6,7 @@ This module contains the constructor for the base class
 import json
 from os.path import exists
 import csv
+import pandas as pd
 
 
 class Base():
@@ -79,7 +80,7 @@ class Base():
     def save_to_file_csv(cls, list_objs):
         '''Saves list of object instances to file.'''
         filename = cls.__name__ + '.csv'
-        if cls.__name__ == 'Sqaure':
+        if cls.__name__ == 'Square':
             fieldnames = ['id', 'size', 'x', 'y']
         else:
             fieldnames = ['id', 'width', 'height', 'x', 'y']
@@ -99,11 +100,13 @@ class Base():
         filename = cls.__name__ + '.csv'
         if not exists(filename):
             return []
-        with open(filename, newline='') as csvfile:
-            obj_data = csv.DictReader(csvfile)
-            class_list = []
-            for obj in obj_data:
-                class_list.append(cls.create(**obj))
+        dict_list = []
+        df = pd.read_csv(filename)
+        obj_list = df.to_dict('records')
+        for obj in obj_list:
+            dict_list.append(cls.create(**obj))
+
+        return dict_list
             
-        return class_list
+
 
