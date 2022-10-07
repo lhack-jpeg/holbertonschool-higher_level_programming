@@ -113,5 +113,3 @@ class Base():
         except Exception:
             return dict_list
             
-
-
