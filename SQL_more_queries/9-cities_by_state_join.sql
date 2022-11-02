@@ -3,6 +3,5 @@
 SELECT
 	cities.id AS id,
 	name,
-	states.name AS name
 from cities
 JOIN states;
