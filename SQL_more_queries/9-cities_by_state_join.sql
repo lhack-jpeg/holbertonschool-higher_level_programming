@@ -1,7 +1,8 @@
 -- Task 9: Cities by States
 -- Return a list of ordered cities and included state name
 SELECT
-	cities.id AS id,
-	name,
+	cities.id,
+	cities.name,
+	states.name
 from cities
-JOIN states;
+LEFT JOIN states ON states.id = cities.state_id;
