@@ -1,7 +1,7 @@
 -- Task 13
 -- Returns a list and count of all Genres in the database
 SELECT
-	tv_genres.name as 'genre',
+	tv_genres.name AS 'genre',
 	COUNT(genre_id) AS 'number_of_shows'
 FROM tv_show_genres
 LEFT JOIN tv_genres
