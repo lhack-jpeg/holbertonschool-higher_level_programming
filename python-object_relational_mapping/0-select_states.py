@@ -1,8 +1,10 @@
 #!/usr/bin/python3
-'''This Module returns the states listed in the database'''
+'''This Module returns the states listed in the database.'''
 
 
-if '__name__' == '__main__':
+if __name__ == '__main__':
+    '''Return all rows from the state tables ordered by ID'''
+
     from sys import argv
     import MySQLdb
 
@@ -17,4 +19,7 @@ if '__name__' == '__main__':
         db=db_name)
     cur = db.cursor()
     sql_statement = "SELECT * FROM states ORDER BY id ASC"
-    results = cur.execute(sql_statement)
+    cur.execute(sql_statement)
+    rows = cur.fetchall()
+    for row in rows:
+        print(row)
