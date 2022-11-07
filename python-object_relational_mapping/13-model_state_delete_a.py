@@ -19,3 +19,6 @@ if __name__ == "__main__":
     instances = session.query(State).filter(State.name.ilike('%a%'))
     for obj in instances:
         session.delete(obj)
+        session.commit()
+    
+    session.close()
