@@ -18,6 +18,6 @@ if __name__ == "__main__":
     session = Session()
     instance = session.query(State).first()
     if not instance:
-        print()
+        print('Nothing')
     else:
         print(f'{instance.id}: {instance.name}')
