@@ -17,6 +17,4 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
     for instance in session.query(State).filter(State.id == 1):
-        if instance is None:
-            break
-        print(f'{instance.id}: {instance.name}')
+         print(f'{instance.id}: {instance.name}')
