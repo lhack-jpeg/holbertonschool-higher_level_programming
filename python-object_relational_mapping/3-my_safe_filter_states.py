@@ -16,7 +16,7 @@ if __name__ == '__main__':
     db_name = argv[3]
     user_input = argv[4]
     user_input = user_input.split(';')
-    user_input = user_input[0].replace("\'","")
+    user_input = user_input[0].replace("\'", "")
 
     db = MySQLdb.connect(
         host='localhost',
