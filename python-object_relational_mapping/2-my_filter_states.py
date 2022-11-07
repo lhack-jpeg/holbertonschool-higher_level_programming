@@ -19,7 +19,8 @@ if __name__ == '__main__':
         passwd=db_password,
         db=db_name)
     cur = db.cursor()
-    SQL = "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC".format(
+    SQL = "SELECT * FROM states WHERE name LIKE BINARY '{}'\
+        ORDER BY id ASC".format(
         user_input)
     cur.execute(SQL)
     rows = cur.fetchall()
