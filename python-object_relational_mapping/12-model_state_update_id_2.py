@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-'''Script adds Louisiana to the Database.'''
+'''Script changes id = 2 to New Meixco to the Database.'''
 
 from model_state import Base, State
 from sys import argv
