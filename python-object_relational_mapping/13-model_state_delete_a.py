@@ -12,12 +12,11 @@ if __name__ == "__main__":
     '''Entry into script. If table is empty print nothing'''
     engine = create_engine(
         f"mysql+mysqldb://{argv[1]}:{argv[2]}@localhost/{argv[3]}",
-        pool_pre_ping=True,
-        echo=True)
+        pool_pre_ping=True)
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    instances = session.query(State).filter(State.name.ilike('%a%'))
+    instances = session.query(State).filter(State.name.like('%a%'))
     for obj in instances:
         session.delete(obj)
     session.commit()
