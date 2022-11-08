@@ -5,7 +5,7 @@
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
-Base = declarative_base()
+from relationship_city import Base, City
 
 
 class State(Base):
@@ -14,8 +14,8 @@ class State(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(String(128), nullable=False)
-    state = relationship(
+    cities = relationship(
         "City",
-        back_populates="states",
+        backref="state",
         cascade="all, delete",
     )

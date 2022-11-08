@@ -3,9 +3,10 @@
 
 from sys import argv
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from relationship_city import City
+from sqlalchemy.orm import sessionmaker, relationship
 from relationship_state import Base, State
+from relationship_city import City
+
 
 if __name__ == "__main__":
     '''Entry into script.'''
@@ -15,5 +16,8 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    california = State(id=1, name="California")
-    city = City(id=1, name='San Fransisco', state_id=1)
+    s1 = State(name="California")
+    c1 = City(name="San Francsico", state=State(name="California"))
+    session.add(c1)
+    session.commit()
+    session.close()
