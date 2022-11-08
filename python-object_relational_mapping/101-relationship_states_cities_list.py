@@ -19,6 +19,6 @@ if __name__ == "__main__":
     q = session.query(
         State).order_by(State.id).all()
     for row in q:
-        print (f'{row.id}: {row.name}')
+        print(f'{row.id}: {row.name}')
         for city in row.cities:
             print(f'\t{city.id}: {city.name}')
