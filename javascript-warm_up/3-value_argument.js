@@ -1,11 +1,15 @@
 #!/usr/bin/node
 
 const process = require('process');
-const argAmount = process.argv.length;
+let count = 0;
 
-if (argAmount === 2) {
+process.argv.forEach((val) => {
+  count++;
+});
+
+if (count === 2) {
   console.log('No argument');
-} else if (argAmount === 3) {
+} else if (count === 3) {
   console.log(process.argv[2]);
 } else {
   //  pass
