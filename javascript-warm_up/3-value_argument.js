@@ -9,10 +9,8 @@ process.argv.forEach((val) => {
 
 if (count === 2) {
   console.log('No argument');
-} else if (count > 3) {
-  process.argv.forEach((val) => {
-    console.log(val);
-  });
+} else if (count >= 3) {
+  console.log(process.argv[2]);
 } else {
   //  pass
 }
