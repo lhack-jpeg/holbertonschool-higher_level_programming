@@ -8,10 +8,7 @@ class Square extends Rectangle {
   }
 
   //  charPrint prints out square using char entered or X as default
-  charPrint (c) {
-    if (!c) {
-      c = 'X';
-    }
+  charPrint (c = 'X') {
     this.print(c);
   }
 }
