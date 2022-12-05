@@ -22,11 +22,11 @@ class Rectangle {
   }
 
   //  Prints out the rectangle to the console
-  print () {
+  print (c = 'X') {
     for (let i = 0; i < this.height; i++) {
       let rectString = '';
       for (let y = 0; y < this.width; y++) {
-        rectString += 'X';
+        rectString += c;
       }
       console.log(rectString);
     }

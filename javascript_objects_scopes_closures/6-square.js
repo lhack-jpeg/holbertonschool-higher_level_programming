@@ -8,14 +8,11 @@ class Square extends Rectangle {
   }
 
   //  charPrint prints out square using char entered or X as default
-  charPrint (c = 'X') {
-    for (let i = 0; i < this.height; i++) {
-      let sqrString = '';
-      for (let y = 0; y < this.width; y++) {
-        sqrString += c;
-      }
-      console.log(sqrString);
+  charPrint (c) {
+    if (!c) {
+      c = 'X';
     }
+    this.print(c);
   }
 }
 
