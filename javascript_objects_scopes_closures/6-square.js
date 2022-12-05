@@ -6,8 +6,9 @@ class Square extends Square5 {
   charPrint (c = undefined) {
     if (c === undefined) {
       super.print();
+    } else {
+      super.print(c);
     }
-    super.print(c);
   }
 }
 
