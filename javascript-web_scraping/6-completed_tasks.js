@@ -5,7 +5,7 @@ const request = require('request');
 
 const url = process.argv[2];
 
-const users = new Object();
+const users = {};
 
 request.get(url, (err, response, body) => {
   if (err) {
@@ -13,18 +13,16 @@ request.get(url, (err, response, body) => {
   }
   const tasks = JSON.parse(body);
   tasks.forEach(element => {
-    if (!users.hasOwnProperty(element.userId)){
-      users[element.userId] = 0;
-    }
+    users[element.userId] = 0;
   });
   tasks.forEach(element => {
-    if (element.completed === true){
-      users[element.userId]++
+    if (element.completed === true) {
+      users[element.userId]++;
     }
-  })
+  });
   for (const user in users) {
-    if (users[user] === 0){
-      delete users[user]
+    if (users[user] === 0) {
+      delete users[user];
     }
   }
   console.log(users);
