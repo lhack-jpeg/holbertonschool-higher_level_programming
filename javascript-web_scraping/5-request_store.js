@@ -16,7 +16,6 @@ request.get(url, (err, res, body) => {
 
   myString = myString.replace(/\\n/g, '\n');
   myString = myString.replace(/"/g, '');
-  console.log(myString);
 
   fs.writeFile(filePath, myString, { encoding: 'utf-8' }, (err) => {
     if (err) {
