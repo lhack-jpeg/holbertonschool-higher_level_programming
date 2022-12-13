@@ -22,5 +22,10 @@ request.get(url, (err, response, body) => {
       users[element.userId]++
     }
   })
+  for (const user in users) {
+    if (users[user] === 0){
+      delete users[user]
+    }
+  }
   console.log(users);
 });
