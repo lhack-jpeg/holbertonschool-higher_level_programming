@@ -11,19 +11,18 @@ request.get(url, (err, response, body) => {
   if (err) {
     console.log(err);
   }
-  starWarsCharacters = {}
   const characters = JSON.parse(body).characters;
-  printCharacter(characters, 0)
+  printCharacter(characters, 0);
 });
 
 const printCharacter = (characters, index) => {
   request.get(characters[index], (err, response, body) => {
-    if (err){
+    if (err) {
       console.log(err);
     }
-    console.log(JSON.parse(body).name)
-    if (index + 1 < characters.length){
-      printCharacter(characters, index + 1)
+    console.log(JSON.parse(body).name);
+    if (index + 1 < characters.length) {
+      printCharacter(characters, index + 1);
     }
-  })
-}
+  });
+};
