@@ -5,3 +5,5 @@ __pycache__
 .vscode/settings.json
 *-main.*
 launch.json
+node_modules/
+package-lock.json
