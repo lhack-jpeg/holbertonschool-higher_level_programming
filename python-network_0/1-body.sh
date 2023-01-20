@@ -1,3 +1,3 @@
 #!/bin/bash
-#Takes in a URL and sends an address and returns the size of it
+# Script displays body of only 200 responses. Follows redirects
 curl -X GET  "$1" -L
