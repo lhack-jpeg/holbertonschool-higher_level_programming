@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# This script fetches a url and prints out the body
+"""This script fetches a url and prints out the body."""
 import urllib.request
 
 
