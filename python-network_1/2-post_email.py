@@ -21,7 +21,7 @@ def post_email():
     post_request = Request(url, headers=headers, data=post_data, method="POST")
     with urlopen(post_request) as response:
         print(response.status)
-        print(response.read())
+        print(response.headers.items())
 
 
 if __name__ == '__main__':
