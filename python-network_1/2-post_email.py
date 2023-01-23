@@ -20,7 +20,7 @@ def post_email():
     post_data = url_encoded_data.encode("utf-8")
     post_request = Request(url, headers=headers, data=post_data, method="POST")
     with urlopen(post_request) as response:
-        server_res = response.body()
+        server_res = response.read()
         server_res = server_res[3:-1]
         print(server_res)
 
