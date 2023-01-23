@@ -17,7 +17,7 @@ def http_error():
             body = response.read()
             print(body.decode('utf-8'))
     except HTTPError as error:
-        print("Error code: {}".format(error))
+        print("Error code: {}".format(error.code))
 
 
 if __name__ == '__main__':
