@@ -4,6 +4,7 @@
     with the email parameter sent through.
 """
 from urllib.request import Request, urlopen
+from urllib.parse import urlencode
 import sys
 
 
@@ -15,6 +16,8 @@ def post_email():
     email = sys.argv[2]
     headers = {"Content-Type": "application/x-www-form-urlencoded"}
     post_data = {"email": email}
+    url_encoded_data = urlencode(post_data)
+    post_data = url_encoded_data.encode("utf-8")
     post_request = Request(url, headers=headers, data=post_data, method="POST")
     with urlopen(post_request) as response:
         print(response.status)
