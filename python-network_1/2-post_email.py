@@ -13,8 +13,9 @@ def post_email():
     """
     url = sys.argv[1]
     email = sys.argv[2]
-    headers = {"email": email}
-    post_request = Request(url, headers=headers, method="POST")
+    headers = {"Content-Type": "application/x-www-form-urlencoded"}
+    post_data = {"email": email}
+    post_request = Request(url, headers=headers, data=post_data, method="POST")
     with urlopen(post_request) as response:
         print(response.status)
         print(response.read())
