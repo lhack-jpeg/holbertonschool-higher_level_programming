@@ -14,7 +14,7 @@ def post_email():
     url = sys.argv[1]
     email = sys.argv[2]
     headers = {"email": email}
-    post_request = Request(url, headers=headers)
+    post_request = Request(url, headers=headers, method="POST")
     with urlopen(post_request) as response:
         print(response.status)
         print(response.read())
