@@ -21,8 +21,7 @@ def post_email():
     post_request = Request(url, headers=headers, data=post_data, method="POST")
     with urlopen(post_request) as response:
         server_res = response.read()
-        server_res = server_res[3:-1]
-        print(server_res)
+        print(server_res.decode('utf-8'))
 
 
 if __name__ == '__main__':
