@@ -18,7 +18,14 @@ def search_api(q=""):
     post_data = {'q': q}
     url = 'http://0.0.0.0:5000/search_user'
     res = requests.post(url, data=post_data)
-    print(res.json())
+    try:
+        json_res = res.json()
+        if (len(json_res) == 0):
+            print('No Result')
+        print(f'[{json_res.get("id")}] {json_res.get("name")}')
+    except Exception as e:
+        print(e)
+        print('Not a valid JSON')
 
 
 if __name__ == "__main__":
