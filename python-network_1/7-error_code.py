@@ -14,6 +14,7 @@ def http_error():
     url = argv[1]
     try:
         response = requests.get(url)
+        response.raise_for_status()
         print(response.text)
     except HTTPError as error:
         print("Error code: {}".format(error))
