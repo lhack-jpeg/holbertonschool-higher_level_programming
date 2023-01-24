@@ -25,7 +25,7 @@ def search_api(q=""):
         if id is None or name is None:
             print('No Result')
 
-        print('[{}] [{}]'.format(id, name))
+        print('[{}] {}'.format(id, name))
     except Exception as e:
         print(e)
         print('Not a valid JSON')
