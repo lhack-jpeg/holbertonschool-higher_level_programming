@@ -23,7 +23,7 @@ def search_api(q=""):
         id = json_res.get('id')
         name = json_res.get('name')
         if id is None or name is None:
-            print('No Result')
+            print('No result')
         else:
             print('[{}] {}'.format(id, name))
     except Exception as e:
