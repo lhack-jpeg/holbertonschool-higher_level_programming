@@ -20,7 +20,7 @@ def search_api(q=""):
     res = requests.post(url, data=post_data)
     try:
         json_res = res.json()
-        if len(json_res['id']) == 0:
+        if json_res.get('id') is None or json_res.get('name') is None:
             print('No Result')
         print(json_res)
     except Exception as e:
