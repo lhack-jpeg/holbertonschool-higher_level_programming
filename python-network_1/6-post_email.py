@@ -15,7 +15,6 @@ def post_email():
     email = argv[2]
     post_data = {"email": email}
     response = requests.post(url, data=post_data)
-    response.encoding('utf-8')
     print(response.text)
 
 
