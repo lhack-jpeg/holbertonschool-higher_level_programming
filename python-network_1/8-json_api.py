@@ -11,8 +11,10 @@ def search_api(q=""):
     Letter will sent under the variable 'q'. If the response is properly
     formatted JSON will return a display of [<id>] <name>.
     """
-    if argv[1]:
+    try:
         q = argv[1]
+    except IndexError as e:
+        pass
     post_data = {'q': q}
     url = 'http://0.0.0.0:5000/search_user'
     res = requests.post(url, data=post_data)
