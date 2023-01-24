@@ -20,9 +20,12 @@ def search_api(q=""):
     res = requests.post(url, data=post_data)
     try:
         json_res = res.json()
-        if json_res.get('id') is None or json_res.get('name') is None:
+        id = json_res.get('id')
+        name = json_res.get('name')
+        if id is None or name is None:
             print('No Result')
-        print(json_res)
+
+        print('[{}] [{}]'.format(id, name))
     except Exception as e:
         print(e)
         print('Not a valid JSON')
